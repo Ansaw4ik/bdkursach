@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 OPR/114.0.0.0" version="24.8.2">
   <diagram name="Страница — 1" id="bmcSU9LmI6GfWrO_aoWZ">
-    <mxGraphModel dx="1469" dy="684" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1469" dy="1853" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -115,7 +115,7 @@
         <mxCell id="BiONEzgEwyhmPc-SouFR-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BiONEzgEwyhmPc-SouFR-38" target="BiONEzgEwyhmPc-SouFR-32">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BiONEzgEwyhmPc-SouFR-38" value="Ввод количества мест в очереди" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="BiONEzgEwyhmPc-SouFR-38" value="Ввод количества мест для записей в очереди" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1070" y="280" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BiONEzgEwyhmPc-SouFR-41" value="include" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
@@ -125,7 +125,46 @@
           <mxGeometry x="1241" y="200" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BiONEzgEwyhmPc-SouFR-44" value="extend" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="210" width="60" height="30" as="geometry" />
+          <mxGeometry x="1100" y="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BiONEzgEwyhmPc-SouFR-45" target="BiONEzgEwyhmPc-SouFR-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BiONEzgEwyhmPc-SouFR-45" target="BiONEzgEwyhmPc-SouFR-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-45" value="Редактирование очереди" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="150" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-46" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="BiONEzgEwyhmPc-SouFR-45" target="BiONEzgEwyhmPc-SouFR-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1170" y="280" as="sourcePoint" />
+            <mxPoint x="1220" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-47" value="Удалить очередь" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="-100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-48" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="BiONEzgEwyhmPc-SouFR-47" target="BiONEzgEwyhmPc-SouFR-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1061" y="112" as="sourcePoint" />
+            <mxPoint x="943" y="69" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-49" value="Изменение количества мест&amp;nbsp; для записей в очереди" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="910" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-51" value="Запрет на ввод новых записей" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="BiONEzgEwyhmPc-SouFR-53" target="BiONEzgEwyhmPc-SouFR-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-53" value="Ввод времени ограничивающего ввод записей в очередь" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BiONEzgEwyhmPc-SouFR-55" value="extend" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1181" y="230" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
