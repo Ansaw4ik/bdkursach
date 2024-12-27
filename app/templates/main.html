@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Easy Queue - Вход</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+  <div class="header">
+    <div class="site-title">easy queue</div>
+
+  </div>
+<div class="container">
+    <h1>Войдите в аккаунт или создайте новый для доступа к очередям</h1>
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error-message">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.email() }}
+        {{ form.password() }}
+        {{ form.submit() }}
+    </form>
+    <p>У вас нет аккаунта? <a href="{{ url_for('routes.registration') }}">Зарегистрируйтесь</a></p>
+</div>
+  </div>
+</body>
+</html>

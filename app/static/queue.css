@@ -1,0 +1,247 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+nav ul form {
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+    text-align: center;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+nav ul li input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+nav ul li input[type="submit"]:hover {
+    background-color: #4cae4c;
+}
+nav ul li input[type="text"] {
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.container {
+    max-width: 1100px;
+    width: 90%;
+    padding: 25px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+.queue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.queue-title {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.info-icon {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    border: 1px solid #333;
+    padding: 2px 6px;
+    border-radius: 50%;
+    color: #333;
+    text-align: center;
+    line-height: 1;
+}
+.info-icon:hover {
+   background-color: #333;
+    color: white;
+}
+#addEntryBtn {
+    padding: 10px 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+#addEntryBtn:hover {
+    background-color: #4cae4c;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    text-align: left;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+table input[type="checkbox"]{
+    cursor: pointer;
+}
+tr.completed {
+    background-color: #dff0d8;
+}
+.tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+    z-index: 10;
+    display: none;
+     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+#addEntryForm {
+    display: flex;
+    flex-direction: column;
+}
+#addEntryForm label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: block;
+}
+#addEntryForm textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+    max-height: 150px;
+    max-width: 100%;
+    min-height: 80px;
+}
+}
+#addEntryForm input[type="submit"] {
+     padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: center;
+}
+#addEntryForm input[type="submit"]:hover{
+    background-color: #4cae4c;
+}
+.btn-back {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-back:hover {
+    background-color: #5a6268;
+}

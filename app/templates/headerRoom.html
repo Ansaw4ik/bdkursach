@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Easy Queue</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='headerRoom.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="{{ url_for('routes.base') }}" class="logo">EasyQueue</a>
+            <nav>
+                <ul class="header-navigation">
+                    <li><a href="{{ url_for('routes.my_rooms') }}">Мои комнаты</a></li>
+                    <li>{{ header_form.email() }}</li>
+                     <form method="POST" action="{{ url_for('routes.logout') }}">
+                        {{ header_form.hidden_tag() }}
+                    <li>
+                        <input type="submit" value="Выйти">
+                    </li>
+                </form>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='registration.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="site-title">easy queue</div>
+    </div>
+
+    <div class="container">
+        <h1>Регистрация</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error-message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.email(placeholder="Email") }}
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+
+            {{ form.password(placeholder="Пароль") }}
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+
+            {{ form.submit() }}
+        </form>
+        <p>Уже есть аккаунт? <a href="{{ url_for('routes.login') }}">Войти</a></p>
+    </div>
+</body>
+</html>

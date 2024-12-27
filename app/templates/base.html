@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Easy Queue</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='base.js') }}"></script>
+</head>
+<body>
+{% include 'headerRoom.html' %}
+    <div class="container">
+        <div class="content">
+             <h1>Мои комнаты</h1>
+          {% if rooms %}
+            <ul class="room-list">
+                 {% for room in rooms %}
+                  <li><a href="/room/{{ room.id }}">{{ room.name }} ({{ room.role }})</a></li>
+                 {% endfor %}
+            </ul>
+          {% else %}
+              <p class="no-rooms-message">У вас пока нет комнат.</p>
+          {% endif %}
+            <div class="create-room-section">
+                <button class="styled-button" id="addRoomIcon">Создать комнату</button>
+
+            </div>
+            <div id="createRoomDialog" style="display: none;">
+                <h2>Создание комнаты</h2>
+             <form id="createRoomForm">
+                {{ create_room_form.hidden_tag() }}
+               <label for="roomName">{{ create_room_form.roomName.label }}</label>
+                 {{ create_room_form.roomName() }}
+                   <label for="roomPassword">{{ create_room_form.roomPassword.label }}</label>
+                   {{ create_room_form.roomPassword() }}
+                    <label for="username">{{ create_room_form.username.label }}</label>
+                 {{ create_room_form.username() }}
+                 <button type="submit" class="styled-button">Создать</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

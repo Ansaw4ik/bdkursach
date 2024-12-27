@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Очередь: {{ queue_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='queue.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='queue.js') }}"></script>
+</head>
+<body>
+    {% include 'headerRoom.html' %}
+    <div class="container">
+        <div class="queue-header">
+            <h1 class="queue-title">
+                Очередь: {{ queue_name }}
+                <span class="info-icon" id="queueInfoIcon">i</span>
+            </h1>
+            {% if is_admin %}
+                <button id="deleteQueueBtn" data-queue-id="{{ queue_id }}">Удалить очередь</button>
+            {% endif %}
+            <button id="addEntryBtn">Добавить запись</button>
+            <a href="{{ url_for('routes.room', room_id=room_id) }}" class="btn-back">Назад к комнате</a>
+        </div>
+
+        <!-- Модальное окно для информации об очереди -->
+        <div class="modal" id="infoModal">
+            <div class="modal-content">
+                <span class="close" id="closeInfoModal">&times;</span>
+                <h2>Информация об очереди</h2>
+                <p><strong>Название:</strong> {{ queue_name }}</p>
+                <p><strong>Дата создания:</strong> {{ creation_date }}</p>
+                <p><strong>Количество мест:</strong> {{ available_entries }}</p>
+                <p><strong>Время окончания записи:</strong> {{ entry_end_time }}</p>
+                <p><strong>Время закрытия очереди:</strong> {{ deletion_time }}</p>
+            </div>
+        </div>
+
+        <!-- Модальное окно для добавления записи -->
+        <div class="modal" id="addEntryModal">
+            <div class="modal-content">
+                <span class="close" id="closeAddEntryModal">&times;</span>
+                <h2>Добавить запись</h2>
+                <form method="POST" id="addEntryForm">
+                    {{ form.hidden_tag() }}
+                    <input type="hidden" name="queueId" value="{{ queue_id }}">  <!-- ID очереди -->
+                    <label for="entrySubject">{{ form.entrySubject.label }}</label>
+                    {{ form.entrySubject() }}<br>
+                    {{ form.submit() }}
+                </form>
+            </div>
+        </div>
+
+        <!-- Таблица очереди -->
+        <table id="queueTable" data-queue-id="{{ queue_id }}">
+            <thead>
+                <tr>
+                    <th data-sort="id" style="width: 5%;">ID</th>
+                    <th data-sort="user_name" style="width: 20%;">Имя пользователя</th>
+                    <th data-sort="created_at" style="width: 20%;">Дата создания</th>
+                    <th data-sort="entry_subject" style="width: 45%;">Запись</th>
+                    {% if is_admin %}
+                        <th style="width: 10%;">Завершить</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody id="queueBody">
+                {% for entry in queue_entries %}
+                    <tr data-entry-id="{{ entry.id }}" {% if entry.is_completed %} class="completed" {% endif %}>
+                        <td>{{ entry.id }}</td>
+                        <td>
+                            <span class="username-hover" data-email="{{ entry.user_email }}">
+                                {{ entry.user_name }}
+                            </span>
+                        </td>
+                        <td>{{ entry.created_at }}</td>
+                        <td>{{ entry.entry_subject }}</td>
+                        {% if is_admin %}
+                            <td>
+                                <input type="checkbox" data-entry-id="{{ entry.id }}"
+                                       {% if entry.is_completed %}checked{% endif %}>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Всплывающая подсказка для email -->
+        <div id="userEmailTooltip" class="tooltip"></div>
+    </div>
+</body>
+</html>

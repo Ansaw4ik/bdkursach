@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Комната: {{ room_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='room.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='room.js') }}"></script>
+</head>
+<body>
+    {% include 'headerRoom.html' %}
+    <div class="container">
+        <div class="room-content">
+            <h1 id="queueTable" data-room-id="{{ room_id }}">Очереди в комнате {{ room_name }}</h1>
+
+            <!-- Кнопка для копирования ссылки на комнату -->
+            <div class="copy-link-container">
+                <button id="copyRoomLinkButton" data-room-id="{{ room_id }}" class="styled-button">Скопировать ссылку на комнату</button>
+                <p id="copyNotification" class="copy-notification" style="display: none;">Скопировано!</p>
+            </div>
+
+            <!-- Секция очередей -->
+             {% if is_user %}
+                <ul class="queue-list" id="queueList">
+                    {% if queues %}
+                        {% for queue in queues %}
+                            <li><a href="/queue/{{ queue.id }}">{{ queue.name }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no-queues-message">В этой комнате пока нет созданных очередей.</p>
+                    {% endif %}
+                </ul>
+            {% else %}
+                <div class="admin-controls">
+                    <button class="styled-button" id="createQueueButton">Создать очередь</button>
+                </div>
+                <div id="createQueueDialog" style="display: none;">
+                    <h2>Создание очереди</h2>
+                    <form id="createQueueForm">
+                        <input type="hidden" name="roomId" value="{{ room_id }}">
+                        {{ form.hidden_tag() }}
+                        <label for="queueName">{{ form.queueName.label }}</label>
+                        {{ form.queueName() }}<br>
+                        <label for="maxEntries">{{ form.maxEntries.label }}</label>
+                        {{ form.maxEntries() }}<br>
+                        <label for="entryDeadline">{{ form.entryDeadline.label }}</label>
+                        {{ form.entryDeadline() }}<br>
+                        <label for="queueExpiration">{{ form.queueExpiration.label }}</label>
+                        {{ form.queueExpiration() }}<br>
+                        <button type="submit" class="styled-button">Создать</button>
+                    </form>
+                </div>
+                 <ul class="queue-list" id="queueListAdmin">
+                    {% if queues %}
+                        {% for queue in queues %}
+                            <li><a href="/queue/{{ queue.id }}">{{ queue.name }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no-queues-message">В этой комнате пока нет созданных очередей.</p>
+                    {% endif %}
+                </ul>
+            {% endif %}
+
+
+            <!-- Кнопка для удаления комнаты (только для администратора) -->
+            {% if is_admin %}
+                <div class="admin-controls">
+                    <button id="deleteRoomButton" data-room-id="{{ room_id }}" class="styled-button delete-button">
+                        Удалить комнату
+                    </button>
+                </div>
+            {% endif %}
+
+            <!-- Секция участников -->
+            <h2>Участники</h2>
+            <ul class="participants-list" id="participantsList">
+                {% for participant in participants %}
+                    <li data-email="{{ participant.email }}">{{ participant.username }} ({{ participant.role }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Tooltip для email пользователя -->
+        <div id="userEmailTooltip" class="tooltip"></div>
+    </div>
+</body>
+</html>
